@@ -13,16 +13,6 @@ from scipy.optimize import curve_fit
 预测时长 = 6
 数据精度 = 1
 
-pd.set_option('display.unicode.ambiguous_as_wide', True)
-pd.set_option('display.unicode.east_asian_width', True)
-plt.rcParams['font.sans-serif'] = ['Songti SC']
-plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
-plt.rcParams['axes.unicode_minus'] = False
-
-
-def arange(n, length):
-  return np.arange(n, n + length, dtype=int)
-
 
 def 线性(时间, a, b):
   return a + b * 时间
@@ -37,7 +27,17 @@ def 指数(时间, 初值, 增长率):
   return (增长率**时间) * 初值
 
 
+def arange(n, length):
+  return np.arange(n, n + length, dtype=int)
+
+
 def main():
+  pd.set_option('display.unicode.ambiguous_as_wide', True)
+  pd.set_option('display.unicode.east_asian_width', True)
+  plt.rcParams['font.sans-serif'] = ['Songti SC']
+  plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+  plt.rcParams['axes.unicode_minus'] = False
+
   len_y = len(序列)
   x = arange(0, len_y)
 
@@ -45,7 +45,7 @@ def main():
   预测时段 = arange(起始时间, len_y + 预测时长)
 
   原始数据 = '原始数据'
-  plt.plot(arange(起始时间, len_y), 序列, 's', marker='.', label=原始数据)
+  plt.plot(arange(起始时间, len_y), 序列, 'o', label=原始数据)
 
   li = [逻辑斯蒂, 指数, 线性]
   df = pd.DataFrame([], columns=['', 原始数据] + [i.__name__ for i in li])
