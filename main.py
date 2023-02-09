@@ -6,14 +6,12 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import curve_fit
 
-预测时长 = 6
-数据精度 = 1
 起始时间 = 2010
-
-# LMC Automotive和EV-Volumes提供的数据显示，2022年全球电动汽车销量总计约780万辆，同比增长68%
-
 序列 = [0.74, 4, 5.9, 11, 19, 33, 47]
 天花板 = 9152
+
+预测时长 = 6
+数据精度 = 1
 
 pd.set_option('display.unicode.ambiguous_as_wide', True)
 pd.set_option('display.unicode.east_asian_width', True)
